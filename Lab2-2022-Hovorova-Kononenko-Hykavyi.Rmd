@@ -127,6 +127,34 @@ decoder <- function(corrected_m){
 received_corrected <- corrector(received, H)
 decoded <- decoder(received_corrected)
 ```
+1) Simulate the encoding-transmission-decoding process N times and find the estimate ˆp of the probability p∗ of
+correct transmission of a single message m. Comment why, for large N, ˆp is expected to be close to p∗.
+```{r}
+checker <- rowSums(abs(messages - decoded))
+n_correct <- length(checker[checker == 0])
+P_correct <- n_correct/N_exps
+P_correct
+```
+2) By estimating the standard deviation of the corresponding indicator of success by the standard error of yoursample
+and using the CLT, find the half-length ε of the confidence interval (ˆp−ε,pˆ+ε), which contains the true value p∗with
+probability at least 0.95. What choice of N guarantees that ε ≤ 0.03?
+```{r}
+```
+3) Draw the histogram of the number k = 0,1,2,3,4 of errors while transmitting a 4-digit binary message. Do you think
+the random variable that counts the number of wrong bits in a decoded message has one of the known
+distributions? Justify your answer.
+```{r}
+n_errs <- rowSums(errors)
+table(n_errs)
+tabulate(n_errs)
+hist(n_errs,
+     breaks = 7,
+    #breaks = seq(0.5,6.6),
+     col = "lightblue",
+     xlab = "Values",
+     xlim = c(0,8)
+     )
+```
 __Do not forget to include several sentences summarizing your work and the conclusions you have made!__ 
 
 
