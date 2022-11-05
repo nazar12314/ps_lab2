@@ -64,7 +64,7 @@ output:
 ```{r}
 # your team id number 
                           ###
-id <- 50                  ### Change to the correct id!
+id <- 14                 ### Change to the correct id!
                           ###
 set.seed(id)
 p <- id/100
@@ -98,12 +98,35 @@ codewords <- (messages %*% G) %% 2
 #### Generate random errors; do not forget that they occur with probability \(p\)! Next, generate the received messages
 
 ```{r}
-#  errors <- ...
-#  received <-   
+errors_generator <- function(N) {
+  matrix(sample(c(0,1), 7*N, replace = TRUE, prob = c(1-p, p)), nrow = N)
+}  
+errors <- errors_generator(100)
+received <- (errors + codewords) %% 2
+
 ```
 
 The next steps include detecting the errors in the received messages, correcting them, and then decoding the obtained messages. After this, you can continue with calculating all the quantities of interest
 
+```{r}
+corrector <- function(received_m, H_m){
+  syndrom_vector <- (received_m %*% H_m) %% 2
+  for(row in 1:nrow(received_m)){
+    to_correct_ind = syndrom_vector[row, 1] + 2 * syndrom_vector[row, 2] + 4 * syndrom_vector[row, 3]
+    if (to_correct_ind > 0){
+      received_m[row, to_correct_ind] <- (received_m[row, to_correct_ind] + 1) %%2
+    }
+  }
+  return(received_m)
+}
+
+decoder <- function(corrected_m){
+  return(cbind(corrected_m[,3], corrected_m[, 5:7]))
+}
+
+received_corrected <- corrector(received, H)
+decoded <- decoder(received_corrected)
+```
 __Do not forget to include several sentences summarizing your work and the conclusions you have made!__ 
 
 
