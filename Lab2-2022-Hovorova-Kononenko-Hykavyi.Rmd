@@ -139,7 +139,19 @@ P_correct
 and using the CLT, find the half-length ε of the confidence interval (ˆp−ε,pˆ+ε), which contains the true value p∗with
 probability at least 0.95. What choice of N guarantees that ε ≤ 0.03?
 ```{r}
+E_I <- P_correct
+Var_I <- E_I - E_I * E_I
+Std_I <- sqrt(Var_I)
+Std_I
 ```
+Central Limit Theorem:
+
+ $Z=\frac{\sqrt{N}}{\sigma}(\hat{p}-p^*)=\frac{\sqrt{N}}{0.436}(\hat{p}-0.7445)$
+$$=P(\hat p -\epsilon <p^*<\hat p + \epsilon)= P(-\epsilon<p^*-\hat{p}<\epsilon)=P(-\epsilon<-(\hat{p}-p^*)<\epsilon)=\\P(\frac{-\epsilon\sqrt{N}}{\sigma}<\frac{-\epsilon\sqrt{N}}{\sigma}(\hat{p}-p^*)<\frac{\epsilon\sqrt{N}}{\sigma})= P(\frac{-\epsilon\sqrt{N}}{0.436}<\frac{-\epsilon\sqrt{N}}{0.436}(\hat{p}-p^*)<\frac{\epsilon\sqrt{N}}{0.436})=\\=\Phi(\frac{\epsilon\sqrt{N}}{0.436})-\Phi(\frac{-\epsilon\sqrt{N}}{0.436})=2\Phi(\frac{\epsilon\sqrt{N}}{0.436})-1=0.95$$ $\Phi(\frac{\epsilon\sqrt{N}}{0.436}) = \frac{0.95+1}{2} = 0.975$ => $\frac{\epsilon\sqrt{N}}{0.436} = 1.96$ $$\epsilon = \frac{1.96*0.436}{\sqrt{N}} = \frac{0.854}{\sqrt{N}}$$ This is equal to $\approx 0,00854$ when $N=10000$\
+For $\epsilon \le 0,03$\:
+$$N\ge (\frac{0.854}{0.03})^2 $$
+$$N\ge 811 $$ \
+
 3) Draw the histogram of the number k = 0,1,2,3,4 of errors while transmitting a 4-digit binary message. Do you think
 the random variable that counts the number of wrong bits in a decoded message has one of the known
 distributions? Justify your answer.
