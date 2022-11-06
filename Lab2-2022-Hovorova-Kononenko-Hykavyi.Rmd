@@ -144,10 +144,10 @@ probability at least 0.95. What choice of N guarantees that ε ≤ 0.03?
 the random variable that counts the number of wrong bits in a decoded message has one of the known
 distributions? Justify your answer.
 ```{r}
-n_errs <- rowSums(errors)
-table(n_errs)
-tabulate(n_errs)
-hist(n_errs,
+#n_errs <- rowSums(errors)
+table(checker)
+tabulate(checker)
+hist(checker,
      breaks = 7,
     #breaks = seq(0.5,6.6),
      col = "lightblue",
