@@ -140,6 +140,7 @@ n_correct <- length(checker[checker == 0])
 P_correct <- n_correct/N_exps
 P_correct
 ```
+For large N, ˆp is expected to be close to p∗ which can be explained with the Strong Law of Large Numbers and convergence in probability.
 2) By estimating the standard deviation of the corresponding indicator of success by the standard error of yoursample
 and using the CLT, find the half-length ε of the confidence interval (ˆp−ε,pˆ+ε), which contains the true value p∗with
 probability at least 0.95. What choice of N guarantees that ε ≤ 0.03?
@@ -157,9 +158,7 @@ For $\epsilon \le 0,03$\:
 $$N\ge (\frac{0.854}{0.03})^2 $$
 $$N\ge 811 $$ \
 
-3) Draw the histogram of the number k = 0,1,2,3,4 of errors while transmitting a 4-digit binary message. Do you think
-the random variable that counts the number of wrong bits in a decoded message has one of the known
-distributions? Justify your answer.
+3) Draw the histogram of the number k = 0,1,2,3,4 of errors while transmitting a 4-digit binary message. 
 ```{r}
 #n_errs <- rowSums(errors)
 table(checker)
@@ -172,6 +171,10 @@ hist(checker,
      xlim = c(0,8)
      )
 ```
+Do you think
+the random variable that counts the number of wrong bits in a decoded message has one of the known
+distributions? Justify your answer.
+Not realy, as the initial distribution of errors is a binomial one, however, the fact that one error can be corrected by hamming code implies that the number of errors in decoded message won`t have the same distribution.
 __Do not forget to include several sentences summarizing your work and the conclusions you have made!__ 
 
 
@@ -513,5 +516,9 @@ paste("the probability that the location is identified as safe is", probability 
 The simulation shows that with obtained N, the probability that the location is identified as safe is even greater than 0.95
 
 ### General summary and conclusions
-
-Summarize here what you've done, whether you solved the tasks, what difficulties you had etc
+During completing this lab task we learned prectical application of such important probability concepts as:
+1) Different distributions of random variables;
+2) Convergence in probability and CLT for approximation;
+3) Different inequalities for getting cdf bounds.
+Except for this, we learned to visualize the results using R language tools.
+But the most valuable part of this experience was the fact that tasks required mathematical modeling of real problems from differnt fields
