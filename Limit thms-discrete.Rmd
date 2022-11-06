@@ -8,6 +8,7 @@ output:
 ## We illustrate LLN for two-point distribution assuming values $\pm1$
 
 ### Generate the data
+
 ```{r}
 p <- .9
 n <- 100         # sample size
@@ -16,7 +17,6 @@ mu <- 2*p -1     # expected value
 sigma <- 2*sqrt(p*(1-p)/n) #standard deviation
 twopointdata  <- replicate(m, mean(sample(c(-1,1), size = n, prob = c(1-p,p), replace = T)))
 ```
-
 
 ### Summarize the data and estimate the probability of $\{|M_n-\mu|>\varepsilon\}$
 
@@ -44,7 +44,6 @@ lines(x,dnorm(x,mu,sigma), col = "red")
 
 #### If we increase the sample size $n$, the data will get more clustered around the true mean $\mu$, and the fraction of sample means outside the $\epsilon$-neighbourhood declines. Try various $n$ to see the effect
 
-
 ## We now illustrate the CLT
 
 ### CLT: compare the ecdf and normal cdf (not normalized)
@@ -59,7 +58,6 @@ x <- seq(min(twopointdata), max(twopointdata),by = .01)
 lines(x, pnorm(x, mean = mu, sd = sigma), col = "red")
 max(abs(ecdf(twopointdata)(x)-pnorm(x, mean = mu, sd = sigma)))
 ```
-
 
 ### CLT: compare the ecdf and normal cdf (normalized)
 
