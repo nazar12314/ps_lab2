@@ -1,6 +1,6 @@
 ---
 title: 'P&S-2022: Lab assignment 2'
-author: "Name1, Name2, Name3"
+authorі: "Hovorova, Kononenko, Hykavyi"
 output:
   html_document:
     df_print: paged
@@ -19,6 +19,11 @@ output:
 *  The __team id number__ referred to in tasks is the __two-digit__ ordinal number of your team on the list. Include the line __set.seed(team id number)__ at the beginning of your code to make your calculations reproducible. Also observe that the answers **do** depend on this number!  
 *  Take into account that not complying with these instructions may result in point deduction regardless of whether or not your implementation is correct. 
 
+Efforts of each team member:
+
+Hovorova Svitlana - task 1
+Kononenko Nazar - task 3
+Hykavyi Oleh - task 2
 
 ### Task 1
 
