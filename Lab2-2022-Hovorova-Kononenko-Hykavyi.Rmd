@@ -516,7 +516,7 @@ paste("the probability that the location is identified as safe is", probability 
 The simulation shows that with obtained N, the probability that the location is identified as safe is even greater than 0.95
 
 ### General summary and conclusions
-During completing this lab task we learned prectical application of such important probability concepts as:
+During completing this lab task we learned practical application of such important probability concepts as:
 1) Different distributions of random variables;
 2) Convergence in probability and CLT for approximation;
 3) Different inequalities for getting cdf bounds.
